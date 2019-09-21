@@ -5,7 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: actions/setup-ruby@v1
+    - uses: eregon/setup-ruby@truffleruby
       with:
-        ruby-version: '2.6.x'
-    - run: ruby -v
+        ruby-version: 'truffleruby-19.2.0'
+    - run: |
+        ruby -v
+        ruby -ropen-uri -e 'puts open("https://rubygems.org/") { |f| f.read(1024) }'
