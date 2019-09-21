@@ -4,11 +4,12 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ 'ubuntu' ]
+        os: [ 'macos' ]
         ruby: [ '2.6.x', 'truffleruby-19.2.0' ]
     runs-on: ${{ matrix.os }}-latest
     steps:
     - uses: actions/checkout@master
+    - run: brew install llvm@4
     - uses: eregon/setup-ruby@truffleruby
       with:
         ruby-version: ${{ matrix.ruby }}
