@@ -4,7 +4,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ 'ubuntu', 'macos' ]
+        os: [ 'ubuntu' ]
         ruby: [ '2.6.x', 'truffleruby-19.2.0' ]
     runs-on: ${{ matrix.os }}-latest
     steps:
