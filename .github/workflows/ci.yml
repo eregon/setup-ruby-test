@@ -2,12 +2,15 @@ name: Test setup-ruby
 on: [push]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ 'ubuntu', 'macos' ]
+        ruby: [ '2.6.x', 'truffleruby-19.2.0' ]
+    runs-on: ${{ matrix.os }}-latest
     steps:
     - uses: actions/checkout@master
     - uses: eregon/setup-ruby@truffleruby
       with:
-        ruby-version: 'truffleruby-19.2.0'
-    - run: |
-        ruby -v
-        ruby -ropen-uri -e 'puts open("https://rubygems.org/") { |f| f.read(1024) }'
+        ruby-version: ${{ matrix.ruby }}
+    - run: ruby -v
+    - run: ruby -ropen-uri -e 'puts open("https://rubygems.org/") { |f| f.read(1024) }'
