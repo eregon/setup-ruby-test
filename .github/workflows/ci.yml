@@ -7,4 +7,4 @@ jobs:
     - uses: actions/checkout@master
     - uses: eregon/test-action@master
       with:
-        milliseconds: 44
+        milliseconds: 45
