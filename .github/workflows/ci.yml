@@ -1,16 +1,10 @@
-name: Test setup-ruby with TruffleRuby
+name: Test test-action
 on: [push]
 jobs:
   build:
-    strategy:
-      matrix:
-        os: [ 'ubuntu', 'macos' ]
-        ruby: [ '2.6.x', 'truffleruby-19.3.0' ]
-    runs-on: ${{ matrix.os }}-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: eregon/setup-ruby@truffleruby
+    - uses: eregon/test-action@master
       with:
-        ruby-version: ${{ matrix.ruby }}
-    - run: ruby -v
-    - run: ruby -ropen-uri -e 'puts open("https://rubygems.org/") { |f| f.read(1024) }'
+        milliseconds: 42
