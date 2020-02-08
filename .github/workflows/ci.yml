@@ -52,7 +52,7 @@ jobs:
       shell: bash
     - run: cat $(ruby -e 'puts RbConfig::CONFIG[%{bindir}]')/rake.bat
       shell: bash
-      if: matrix.ruby == 'jruby'
+      # if: matrix.ruby == 'jruby'
 
     # - run: bundle exec rake
     #   shell: bash
