@@ -31,6 +31,8 @@ jobs:
     - run: cp C:\Users\runneradmin\.rubies\jruby-9.2.9.0\bin\jruby.bash C:\Users\runneradmin\.rubies\jruby-9.2.9.0\bin\ruby
       if: matrix.ruby == 'jruby'
 
+    - run: gem install jruby-launcher
+
     - run: ruby -v
     - run: ruby -v
       shell: bash
@@ -54,6 +56,4 @@ jobs:
       shell: bash
       # if: matrix.ruby == 'jruby'
 
-    - run: bundle exec rake
-      shell: bash
     - run: bundle exec rake
