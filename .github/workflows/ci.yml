@@ -33,18 +33,18 @@ jobs:
     - run: ruby -v
       shell: bash
 
-    - run: ruby -e 'puts RbConfig::CONFIG["bindir"]'
+    - run: ruby -e 'puts RbConfig::CONFIG[%{bindir}]'
       shell: bash
-    - run: cat $(ruby -e 'puts RbConfig::CONFIG["bindir"]')/rake
+    - run: cat $(ruby -e 'puts RbConfig::CONFIG[%{bindir}]')/rake
       shell: bash
-    # - run: cat $(ruby -e 'puts RbConfig::CONFIG["bindir"]')/rake.bat
+    # - run: cat $(ruby -e 'puts RbConfig::CONFIG[%{bindir}]')/rake.bat
     #   shell: bash
 
     - run: bundle install
 
-    - run: cat $(ruby -e 'puts RbConfig::CONFIG["bindir"]')/rake
+    - run: cat $(ruby -e 'puts RbConfig::CONFIG[%{bindir}]')/rake
       shell: bash
-    # - run: cat $(ruby -e 'puts RbConfig::CONFIG["bindir"]')/rake.bat
+    # - run: cat $(ruby -e 'puts RbConfig::CONFIG[%{bindir}]')/rake.bat
     #   shell: bash
 
     - run: bundle exec rake
