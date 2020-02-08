@@ -40,7 +40,6 @@ jobs:
     # - run: cat $(ruby -e 'puts RbConfig::CONFIG[%{bindir}]')/rake.bat
     #   shell: bash
 
-    - run: gem install bundler
     - run: bundle install
 
     - run: cat $(ruby -e 'puts RbConfig::CONFIG[%{bindir}]')/rake
