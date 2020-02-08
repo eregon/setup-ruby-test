@@ -26,11 +26,7 @@ jobs:
     - run: echo $PATHEXT
       shell: bash
 
-    # - run: cp C:\Users\runneradmin\.rubies\jruby-9.2.9.0\bin\jruby.sh C:\Users\runneradmin\.rubies\jruby-9.2.9.0\bin\jruby
-    #   if: matrix.ruby == 'jruby'
-    # - run: cp C:\Users\runneradmin\.rubies\jruby-9.2.9.0\bin\jruby.sh C:\Users\runneradmin\.rubies\jruby-9.2.9.0\bin\ruby
-    #   if: matrix.ruby == 'jruby'
-    - run: cp C:\Users\runneradmin\.rubies\jruby-9.2.9.0\bin\jruby.exe C:\Users\runneradmin\.rubies\jruby-9.2.9.0\bin\ruby.exe
+    - run: cp C:\Users\runneradmin\.rubies\jruby-9.2.9.0\bin\jruby.bash C:\Users\runneradmin\.rubies\jruby-9.2.9.0\bin\ruby
       if: matrix.ruby == 'jruby'
 
     - run: ruby -v
