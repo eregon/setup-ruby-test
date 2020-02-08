@@ -54,6 +54,6 @@ jobs:
       shell: bash
       # if: matrix.ruby == 'jruby'
 
-    # - run: bundle exec rake
-    #   shell: bash
+    - run: bundle exec rake
+      shell: bash
     - run: bundle exec rake
