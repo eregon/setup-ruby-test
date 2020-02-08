@@ -16,7 +16,7 @@ jobs:
     - run: echo $PATH
       shell: bash
 
-    - uses: ruby/setup-ruby@v1
+    - uses: ruby/setup-ruby@fix-jruby
       with:
         ruby-version: ${{ matrix.ruby }}
 
