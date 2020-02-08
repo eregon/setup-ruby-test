@@ -50,4 +50,5 @@ jobs:
       # if: matrix.ruby == 'jruby'
 
     - run: bundle exec rake --version
+    - run: bundle exec rake default
     - run: bundle exec rake
