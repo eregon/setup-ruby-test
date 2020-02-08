@@ -43,6 +43,9 @@ jobs:
       shell: bash
       if: matrix.ruby == 'jruby'
 
+    - run: gem install bundler
+    - run: bundle --version
+
     - run: bundle install
 
     - run: cat $(ruby -e 'puts RbConfig::CONFIG[%{bindir}]')/rake
