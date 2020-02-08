@@ -11,10 +11,22 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby ${{ matrix.ruby }}
-      uses: ruby/setup-ruby@fix-jruby
+
+    - run: echo $env:PATH
+    - run: echo $PATH
+      shell: bash
+
+    - uses: ruby/setup-ruby@fix-jruby
       with:
         ruby-version: ${{ matrix.ruby }}
+
+    - run: echo $env:path
+    - run: echo $PATH
+      shell: bash
+
+    - run: cp C:\Users\runneradmin\.rubies\jruby-9.2.9.0\bin\jruby.sh C:\Users\runneradmin\.rubies\jruby-9.2.9.0\bin\jruby
+      if: matrix.ruby == 'jruby'
+
     - run: ruby -v
     - run: ruby -v
       shell: bash
