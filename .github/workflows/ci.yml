@@ -5,12 +5,14 @@ jobs:
     strategy:
       matrix:
         os: [ 'ubuntu', 'macos' ]
-        ruby: [ '2.6.x', 'truffleruby-19.3.0' ]
+        ruby: [ 2.7.0, ruby-head ]
     runs-on: ${{ matrix.os }}-latest
     steps:
     - uses: actions/checkout@master
-    - uses: eregon/setup-ruby@truffleruby
+    - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
     - run: ruby -v
     - run: ruby -ropen-uri -e 'puts open("https://rubygems.org/") { |f| f.read(1024) }'
+    - run: ruby -e 'puts $"'
+    - run: ruby -ropenssl -e 'puts $"'
