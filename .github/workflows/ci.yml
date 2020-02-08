@@ -32,6 +32,7 @@ jobs:
       if: matrix.ruby == 'jruby'
 
     - run: gem install jruby-launcher
+      shell: bash
 
     - run: ruby -v
     - run: ruby -v
