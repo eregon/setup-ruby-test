@@ -37,14 +37,18 @@ jobs:
       shell: bash
     - run: cat $(ruby -e 'puts RbConfig::CONFIG[%{bindir}]')/rake
       shell: bash
-    # - run: cat $(ruby -e 'puts RbConfig::CONFIG[%{bindir}]')/rake.bat
-    #   shell: bash
+    - run: cat $(ruby -e 'puts RbConfig::CONFIG[%{bindir}]')/rake.bat
+      shell: bash
+      if: matrix.ruby == 'jruby'
 
     - run: bundle install
 
     - run: cat $(ruby -e 'puts RbConfig::CONFIG[%{bindir}]')/rake
       shell: bash
-    # - run: cat $(ruby -e 'puts RbConfig::CONFIG[%{bindir}]')/rake.bat
-    #   shell: bash
+    - run: cat $(ruby -e 'puts RbConfig::CONFIG[%{bindir}]')/rake.bat
+      shell: bash
+      if: matrix.ruby == 'jruby'
 
+    - run: bundle exec rake
+      shell: bash
     - run: bundle exec rake
