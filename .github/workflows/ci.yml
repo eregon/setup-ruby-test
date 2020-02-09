@@ -4,8 +4,8 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ ubuntu, macos ]
-        ruby: [ 2.6, truffleruby ]
+        os: [ windows ]
+        ruby: [ 2.6 ]
     runs-on: ${{ matrix.os }}-latest
     steps:
     - uses: actions/checkout@v2
@@ -13,4 +13,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
     - run: ruby -v
-    - run: ruby -ropen-uri -e 'puts open("https://rubygems.org/") { |f| f.read(1024) }'
+    - run: ruby -ropen-uri -e 'puts open(%{https://rubygems.org/}) { |f| f.read(1024) }'
+    - run: ls C:\ProgramData\Chocolatey\bin
+    - run: ls C:\msys64\mingw64\bin
+    - run: ls C:\msys64\usr\bin
