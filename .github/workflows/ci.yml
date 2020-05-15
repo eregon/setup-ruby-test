@@ -1,11 +1,12 @@
-name: Test ruby/setup-ruby with TruffleRuby
+name: Test ruby/setup-ruby
 on: [push]
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
-        os: [ ubuntu, macos ]
-        ruby: [ 2.6, truffleruby ]
+        os: [ ubuntu ]
+        ruby: [ 2.6, truffleruby-head, jruby, rubinius ]
     runs-on: ${{ matrix.os }}-latest
     steps:
     - uses: actions/checkout@v2
@@ -13,4 +14,4 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
     - run: ruby -v
-    - run: ruby -ropen-uri -e 'puts open("https://rubygems.org/") { |f| f.read(1024) }'
+    - run: gem i bigdecimal
