@@ -8,6 +8,9 @@ jobs:
         os: [ macos ]
     runs-on: ${{ matrix.os }}-latest
     steps:
+    - run: brew config
+    - run: brew update
+    - run: brew doctor
     - run: brew --prefix openssl
     - run: brew info openssl
     - run: brew info openssl@1.1
