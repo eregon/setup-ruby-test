@@ -5,13 +5,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu ]
-        ruby: [ 2.6, truffleruby-head, jruby, rubinius ]
+        os: [ macos ]
     runs-on: ${{ matrix.os }}-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-    - run: ruby -v
-    - run: gem i bigdecimal
+    - run: brew --prefix openssl
+    - run: brew info openssl
+    - run: brew info openssl@1.1
