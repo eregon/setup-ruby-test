@@ -9,3 +9,4 @@ jobs:
     runs-on: ${{ matrix.os }}-latest
     steps:
     - run: echo ${env:RUNNER_TOOL_CACHE}
+    - run: pwd
