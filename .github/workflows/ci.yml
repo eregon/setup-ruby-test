@@ -5,7 +5,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu, macos, windows ]
+        os: [ windows ]
     runs-on: ${{ matrix.os }}-latest
     steps:
-    - run: echo ${{ env.RUNNER_TOOL_CACHE }}
+    - run: echo ${env:RUNNER_TOOL_CACHE}
