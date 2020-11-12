@@ -1,4 +1,4 @@
-name: Test ruby/setup-ruby
+name: Test
 on: [push]
 jobs:
   build:
@@ -8,41 +8,19 @@ jobs:
         os: [ ubuntu, macos, windows ]
     runs-on: ${{ matrix.os }}-latest
     steps:
-    - uses: actions/setup-ruby@v1
-    - run: ruby -v
-    - run: echo $RUNNER_TOOL_CACHE
-      shell: bash
-    - run: ruby -e 'p RbConfig::CONFIG["prefix"]'
-      shell: bash
+      - run: echo "C:\msys64\usr\bin" >> $GITHUB_PATH
+        shell: bash
 
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-    - name: Dump job context
-      env:
-        JOB_CONTEXT: ${{ toJson(job) }}
-      run: echo "$JOB_CONTEXT"
-    - name: Dump steps context
-      env:
-        STEPS_CONTEXT: ${{ toJson(steps) }}
-      run: echo "$STEPS_CONTEXT"
-    - name: Dump runner context
-      env:
-        RUNNER_CONTEXT: ${{ toJson(runner) }}
-      run: echo "$RUNNER_CONTEXT"
-    - name: Dump strategy context
-      env:
-        STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-      run: echo "$STRATEGY_CONTEXT"
-    - name: Dump matrix context
-      env:
-        MATRIX_CONTEXT: ${{ toJson(matrix) }}
-      run: echo "$MATRIX_CONTEXT"
-    - name: env
-      run: env
-      shell: bash
-    - name: Dump env context
-      env:
-        ENV_CONTEXT: ${{ toJson(env) }}
-      run: echo "$ENV_CONTEXT"
+      - uses: actions/cache@v2
+        with:
+          path: top/foo
+          key: ${{ runner.os }}-debug-cache1
+
+      - run: ls -l
+        shell: bash
+
+      - name: Generate files
+        run: |
+          mkdir -p top/foo
+          echo hello > top/foo/bar.txt
+        shell: bash
