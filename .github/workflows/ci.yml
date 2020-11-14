@@ -9,7 +9,8 @@ jobs:
         ruby: [ truffleruby-head ]
         n: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     runs-on: ${{ matrix.os }}
-    #env:
+    env:
+      DEBUG: true
     #  TRUFFLERUBYOPT: "--vm.XX:+PrintGC --vm.XX:+VerboseGC --vm.XX:+PrintGCSummary --experimental-options --engine.TraceCompilation"
     steps:
     - uses: actions/checkout@v2
