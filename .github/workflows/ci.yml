@@ -5,34 +5,28 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu ]
+        os: [ ubuntu-18.04 ]
         ruby: [ truffleruby, truffleruby-head ]
-    runs-on: ${{ matrix.os }}-latest
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
     - run: bundle config --local path vendor/bundle
+    - run: free -m
 
-    - run: rm -rf vendor/bundle
-    - run: bundle install --jobs 4
-    - run: rm -rf vendor/bundle
-    - run: bundle install --jobs 4
-    - run: rm -rf vendor/bundle
-    - run: bundle install --jobs 4
-    - run: rm -rf vendor/bundle
-    - run: bundle install --jobs 4
-    - run: rm -rf vendor/bundle
-    - run: bundle install --jobs 4
+    - run: |
+        git clone https://github.com/eregon/precise-time.git
+        cd precise-time
+        make install
+        echo $HOME/bin >> $GITHUB_PATH
+    - run: precise-time `which echo` foo
 
-    - run: rm -rf vendor/bundle
-    - run: bundle install --jobs 4
-    - run: rm -rf vendor/bundle
-    - run: bundle install --jobs 4
-    - run: rm -rf vendor/bundle
-    - run: bundle install --jobs 4
-    - run: rm -rf vendor/bundle
-    - run: bundle install --jobs 4
-    - run: rm -rf vendor/bundle
-    - run: bundle install --jobs 4
+    - run: |
+        echo '#!/bin/sh' >> script.sh
+        echo 'rm -rf vendor/bundle' >> script.sh
+        echo 'bundle install --jobs 4' >> script.sh
+        chmod +x script.sh
+
+    - run: precise-time 10 $PWD/script.sh
