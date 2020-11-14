@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # No bundle lock before
+    # No bundle lock before, mem
     - run: rm -rf vendor/bundle
     - uses: eregon/setup-ruby@debug-truffleruby-bundler-oom
       with:
