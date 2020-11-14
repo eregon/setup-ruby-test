@@ -6,12 +6,33 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu ]
-        ruby: [ 2.6, truffleruby-head, jruby, rubinius ]
+        ruby: [ truffleruby, truffleruby-head ]
     runs-on: ${{ matrix.os }}-latest
     steps:
     - uses: actions/checkout@v2
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
-    - run: ruby -v
-    - run: gem i bigdecimal
+    - run: bundle config --local path vendor/bundle
+
+    - run: rm -rf vendor/bundle
+    - run: bundle install --jobs 4
+    - run: rm -rf vendor/bundle
+    - run: bundle install --jobs 4
+    - run: rm -rf vendor/bundle
+    - run: bundle install --jobs 4
+    - run: rm -rf vendor/bundle
+    - run: bundle install --jobs 4
+    - run: rm -rf vendor/bundle
+    - run: bundle install --jobs 4
+
+    - run: rm -rf vendor/bundle
+    - run: bundle install --jobs 4
+    - run: rm -rf vendor/bundle
+    - run: bundle install --jobs 4
+    - run: rm -rf vendor/bundle
+    - run: bundle install --jobs 4
+    - run: rm -rf vendor/bundle
+    - run: bundle install --jobs 4
+    - run: rm -rf vendor/bundle
+    - run: bundle install --jobs 4
