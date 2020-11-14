@@ -8,6 +8,8 @@ jobs:
         os: [ ubuntu-18.04 ]
         ruby: [ truffleruby, truffleruby-head ]
     runs-on: ${{ matrix.os }}
+    env:
+      TRUFFLERUBYOPT: "--vm.XX:+PrintGC --vm.XX:+VerboseGC --vm.XX:+PrintGCSummary --experimental-options --engine.TraceCompilation"
     steps:
     - uses: actions/checkout@v2
 
