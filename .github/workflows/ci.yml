@@ -10,23 +10,56 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
+
+    - run: rm -rf vendor/bundle
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
-    - run: bundle config --local path vendor/bundle
-    - run: free -m
+        bundler-cache: true
+    - run: rm -rf vendor/bundle
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - run: rm -rf vendor/bundle
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - run: rm -rf vendor/bundle
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - run: rm -rf vendor/bundle
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
 
-    - run: |
-        git clone https://github.com/eregon/precise-time.git
-        cd precise-time
-        make install
-        echo $HOME/bin >> $GITHUB_PATH
-    - run: precise-time `which echo` foo
 
-    - run: |
-        echo '#!/bin/sh' >> script.sh
-        echo 'rm -rf vendor/bundle' >> script.sh
-        echo 'bundle install --jobs 4' >> script.sh
-        chmod +x script.sh
-
-    - run: precise-time 10 $PWD/script.sh
+    - run: rm -rf vendor/bundle
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - run: rm -rf vendor/bundle
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - run: rm -rf vendor/bundle
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - run: rm -rf vendor/bundle
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - run: rm -rf vendor/bundle
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
