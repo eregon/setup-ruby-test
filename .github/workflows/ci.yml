@@ -6,12 +6,10 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu ]
-        ruby: [ 2.6, truffleruby-head, jruby, rubinius ]
     runs-on: ${{ matrix.os }}-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: ruby/setup-ruby@v1
+    - uses: actions/setup-ruby@v1
       with:
-        ruby-version: ${{ matrix.ruby }}
+        ruby-version: ">= 2.6"
     - run: ruby -v
-    - run: gem i bigdecimal
