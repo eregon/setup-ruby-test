@@ -8,14 +8,15 @@ jobs:
       uses: softprops/action-gh-release@v1
       id: create_release
       with:
-        tag_name: testtag
+        tag_name: testtag2
         draft: true
         prerelease: false
-        body: body
+        body: body2
 
     - run: 'echo hello > foo.txt'
     - name: Upload Asset
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: testtag
+        tag_name: testtag2
+        draft: true
         files: foo.txt
