@@ -4,17 +4,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    # - uses: actions/checkout@v3
 
-    - run: gh release create --draft aghrelease --title aghrelease --notes "my body"
+    - run: gh release create --draft vbar --title vbar --notes "my body"
       env:
         GH_TOKEN: ${{ github.token }}
+        GH_REPO: ${{ github.repository }}
+
     - run: echo hello > foo.txt
-    - run: gh release upload aghrelease foo.txt
+    - run: gh release upload vbar foo.txt
       env:
         GH_TOKEN: ${{ github.token }}
+        GH_REPO: ${{ github.repository }}
 
-    - run: sleep 30
-    - run: gh release edit aghrelease --draft=false
+    - run: gh release edit vbar --draft=false
       env:
         GH_TOKEN: ${{ github.token }}
+        GH_REPO: ${{ github.repository }}
