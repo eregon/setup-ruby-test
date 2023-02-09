@@ -2,15 +2,20 @@ name: Test ruby/setup-ruby
 on: [push]
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ ubuntu ]
-        ruby: [ 3.2, ruby-head ]
-    runs-on: ${{ matrix.os }}-latest
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: ruby/setup-ruby@v1
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      id: create_release
       with:
-        ruby-version: ${{ matrix.ruby }}
-    - run: gem list
+        tag_name: testtag
+        draft: true
+        prerelease: false
+        body: body
+
+    - run: 'echo hello > foo.txt'
+    - name: Upload Asset
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: testtag
+        files: foo.txt
