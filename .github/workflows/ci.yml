@@ -6,19 +6,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Create Release
-      uses: softprops/action-gh-release@v1
-      id: create_release
-      with:
-        tag_name: testtag3
-        draft: true
-        prerelease: false
-        body: body3
-
-    - run: 'echo hello > foo.txt'
-    - name: Upload Asset
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: testtag3
-        draft: true
-        files: foo.txt
+    - run: gh release create --draft ghrelease --title ghrelease --notes "my body"
+    - run: echo hello > foo.txt
+    - run: gh release upload ghrelease foo.txt
