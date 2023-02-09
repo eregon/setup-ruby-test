@@ -6,10 +6,15 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - run: gh release create --draft ghrelease --title ghrelease --notes "my body"
+    - run: gh release create --draft aghrelease --title aghrelease --notes "my body"
       env:
         GH_TOKEN: ${{ github.token }}
     - run: echo hello > foo.txt
-    - run: gh release upload ghrelease foo.txt
+    - run: gh release upload aghrelease foo.txt
+      env:
+        GH_TOKEN: ${{ github.token }}
+
+    - run: sleep 30
+    - run: gh release edit aghrelease --draft=false
       env:
         GH_TOKEN: ${{ github.token }}
