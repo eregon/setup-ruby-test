@@ -1,5 +1,5 @@
 name: Test ruby/setup-ruby
-on: [push]
+on: [push, workflow_dispatch]
 jobs:
   build:
     strategy:
