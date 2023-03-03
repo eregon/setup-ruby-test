@@ -10,18 +10,21 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     # - uses: actions/checkout@v2
-    - run: npm install getos
+    - run: npm install get-os-info
     - uses: actions/github-script@v6
       with:
         script: |
           const os = require('os')
+          console.log(os.type())
+          console.log(os.platform())
           console.log(os.version())
+          console.log(os.release())
+          console.log(os.arch())
+          console.log(os.hostname())
 
-          var getos = require('getos')
-          getos(function(e,os) {
-            if(e) return console.log(e)
-            console.log(JSON.stringify(os))
-          })
+          const { getOSInfo } = require('get-os-info')
+          const info = await getOSInfo()
+          console.log(info)
 
     # - uses: ruby/setup-ruby@v1
     #   with:
