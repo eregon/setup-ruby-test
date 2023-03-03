@@ -5,12 +5,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu ]
-        ruby: [ "3.0.0", "3.0.1", "3.0.2", "3.0.3", "3.0.4", "3.0.5" ]
-    runs-on: ${{ matrix.os }}-latest
+        os: [ ubuntu-18.04, ubuntu-20.04, ubuntu-22.04, macos-10.15, macos-11, macos-12, windows-2019, windows-2022 ]
+        ruby: [ 3.2 ]
+    runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v2
-    - uses: ruby/setup-ruby@v1
+    # - uses: actions/checkout@v2
+    - uses: actions/github-script@v6
       with:
-        ruby-version: ${{ matrix.ruby }}
-        bundler-cache: true
+        script: |
+          const os = require('os')
+          console.log(os.version())
+      
+    # - uses: ruby/setup-ruby@v1
+    #   with:
+    #     ruby-version: ${{ matrix.ruby }}
+    #     bundler-cache: true
