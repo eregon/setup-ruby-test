@@ -9,24 +9,9 @@ jobs:
         ruby: [ 3.2 ]
     runs-on: ${{ matrix.os }}
     steps:
-    # - uses: actions/checkout@v2
-    - run: npm install get-os-info
-    - uses: actions/github-script@v6
+    - uses: actions/checkout@v2
+    - uses: eregon/setup-ruby@consider-different-toolcache-self-hosted
       with:
-        script: |
-          const os = require('os')
-          console.log(os.type())
-          console.log(os.platform())
-          console.log(os.version())
-          console.log(os.release())
-          console.log(os.arch())
-          console.log(os.hostname())
-
-          const { getOSInfo } = require('get-os-info')
-          const info = await getOSInfo()
-          console.log(info)
-
-    # - uses: ruby/setup-ruby@v1
-    #   with:
-    #     ruby-version: ${{ matrix.ruby }}
-    #     bundler-cache: true
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+        self-hosted: true
