@@ -10,12 +10,19 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     # - uses: actions/checkout@v2
+    - run: npm install getos
     - uses: actions/github-script@v6
       with:
         script: |
           const os = require('os')
           console.log(os.version())
-      
+
+          var getos = require('getos')
+          getos(function(e,os) {
+            if(e) return console.log(e)
+            console.log(JSON.stringify(os))
+          })
+
     # - uses: ruby/setup-ruby@v1
     #   with:
     #     ruby-version: ${{ matrix.ruby }}
