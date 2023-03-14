@@ -5,12 +5,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-18.04, ubuntu-20.04, ubuntu-22.04, macos-10.15, macos-11, macos-12, windows-2019, windows-2022 ]
+        os: [ ubuntu, macos, windows ]
         ruby: [ 3.2 ]
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: eregon/setup-ruby@consider-different-toolcache-self-hosted
+    - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
+    - run: ruby -d -e sleep
+      timeout-minutes: 1
