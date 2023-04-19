@@ -5,14 +5,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu, macos, windows ]
+        os: [ ubuntu ]
         ruby: [ 3.2 ]
     runs-on: ${{ matrix.os }}-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-        bundler-cache: true
-    - run: ruby -d -e sleep
-      timeout-minutes: 1
+
+    - run: wget 'https://github.com/eregon/setup-ruby-test/releases/download/vbar/llvm-src-llvmorg-15.0.6-4-gaeae49c2d7-bg8671e93c04.tar.gz'
+    - run: wget 'https://github.com/eregon/setup-ruby-test/releases/download/vbar/llvm-src-llvmorg-15.0.6-4-gaeae49c2d7-bg8671e93c04.tar.gz'
+    - run: wget 'https://github.com/eregon/setup-ruby-test/releases/download/vbar/llvm-src-llvmorg-15.0.6-4-gaeae49c2d7-bg8671e93c04.tar.gz'
+    - run: wget 'https://github.com/eregon/setup-ruby-test/releases/download/vbar/llvm-src-llvmorg-15.0.6-4-gaeae49c2d7-bg8671e93c04.tar.gz'
+    - run: wget 'https://github.com/eregon/setup-ruby-test/releases/download/vbar/llvm-src-llvmorg-15.0.6-4-gaeae49c2d7-bg8671e93c04.tar.gz'
+
+    - run: wget 'https://lafo.ssw.uni-linz.ac.at/pub/llvm-org/llvm-src-llvmorg-15.0.6-4-gaeae49c2d7-bg8671e93c04.tar.gz'
+    - run: wget 'https://lafo.ssw.uni-linz.ac.at/pub/llvm-org/llvm-src-llvmorg-15.0.6-4-gaeae49c2d7-bg8671e93c04.tar.gz'
+    - run: wget 'https://lafo.ssw.uni-linz.ac.at/pub/llvm-org/llvm-src-llvmorg-15.0.6-4-gaeae49c2d7-bg8671e93c04.tar.gz'
+    - run: wget 'https://lafo.ssw.uni-linz.ac.at/pub/llvm-org/llvm-src-llvmorg-15.0.6-4-gaeae49c2d7-bg8671e93c04.tar.gz'
+    - run: wget 'https://lafo.ssw.uni-linz.ac.at/pub/llvm-org/llvm-src-llvmorg-15.0.6-4-gaeae49c2d7-bg8671e93c04.tar.gz'
