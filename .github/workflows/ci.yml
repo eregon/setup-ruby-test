@@ -5,14 +5,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-20.04, ubuntu-22.04 ]
-        ruby: [ 2.2 ]
+        os: [ macos-latest ]
+        ruby: [ 2.5 ]
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
-    - uses: ruby/setup-ruby@v1
+    - uses: ruby/setup-ruby@master
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler: none
-    - run: gem install --ignore-dependencies bundler -v '~> 1.0'
-    - run: bundle install
+    - run: ruby -v
