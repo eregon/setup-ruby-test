@@ -5,7 +5,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-latest ]
+        os: [ macos-latest, macos-11, macos-12, macos-13, macos-14 ]
         ruby: [ 2.5 ]
     runs-on: ${{ matrix.os }}
     steps:
