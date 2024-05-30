@@ -5,8 +5,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-latest, macos-11, macos-12, macos-13, macos-14 ]
-        ruby: [ 2.5 ]
+        os: [ ubuntu-24.04 ]
+        ruby: [ jruby-9.1.17.0 ]
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
